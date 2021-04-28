@@ -1,4 +1,4 @@
-export const storageKey = 'crates';
+export const storageKey = 'localization';
 export const accessTokenKey = `${storageKey}:accessTokenKey`;
 export const usernameKey = `${storageKey}:usernameKey`;
 export const baseUrl = 'baseUrl';
