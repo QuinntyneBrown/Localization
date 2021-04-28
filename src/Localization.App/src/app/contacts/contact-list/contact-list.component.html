@@ -1,19 +1,19 @@
-<div *ngIf="vm$ | async as vm">
+<ng-container *ngIf="vm$ | async as vm">
 
-  <h1 class="mat-headline">{{ "CONTACTS.LIST" | translate }}</h1>
+  <h1 class="mat-headline">{{ contactListIntl.titleLabel$ | async }}</h1>
 
-  <button mat-raised-button (click)='create()'>{{ "COMMON.CREATE" | translate }}</button>
+  <button mat-raised-button (click)='create()'>{{ contactListIntl.createLabel$ | async }}</button>
   
   <table mat-table [dataSource]="vm.dataSource" class="mat-elevation-z8">
         
       <ng-container matColumnDef="name">
-          <th mat-header-cell *matHeaderCellDef>{{ "COMMON.NAME" | translate }}</th>
+          <th mat-header-cell *matHeaderCellDef>{{ contactListIntl.nameLabel$ | async }}</th>
           <td mat-cell *matCellDef="let contact"> {{ contact.name }} </td>
       </ng-container>        
   
       <ng-container matColumnDef="edit">
           <th mat-header-cell *matHeaderCellDef></th>
-          <td style="width:100px" mat-cell *matCellDef="let contact">
+          <td mat-cell *matCellDef="let contact" class="--actions">
             <button mat-icon-button (click)="edit(contact)">
               <mat-icon>edit</mat-icon>
             </button>
@@ -27,5 +27,5 @@
 
   <mat-paginator #paginator [length]="vm.length$ | async" [pageSize]="vm.pageSize" [pageSizeOptions]="[5, 10, 20]" class="mat-elevation-z8" (page)="vm.dataSource.getPage({ index: paginator.pageIndex, pageSize: vm.pageSize })"></mat-paginator>
 
-</div>
+</ng-container>
 

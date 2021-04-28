@@ -13,9 +13,8 @@
     </form>
 
     <div class="actions">
-        <button mat-raised-button (click)="save(vm)" color="primary" [disabled]="!vm.form.dirty && vm.form.valid">Save</button>
+        <button mat-raised-button (click)="save(vm)" color="primary" [disabled]="!vm.form.dirty || !vm.form.valid">Save</button>
 
         <button mat-raised-button (click)="cancel()">Cancel</button>
-        
     </div>
 </mat-card>

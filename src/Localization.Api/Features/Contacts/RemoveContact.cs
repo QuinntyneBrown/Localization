@@ -1,12 +1,10 @@
-using FluentValidation;
-using MediatR;
-using System.Threading;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-using System;
-using Localization.Api.Models;
 using Localization.Api.Core;
 using Localization.Api.Interfaces;
+using MediatR;
+using Microsoft.EntityFrameworkCore;
+using System;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Localization.Api.Features
 {

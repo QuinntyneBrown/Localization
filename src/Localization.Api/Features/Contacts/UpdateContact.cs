@@ -1,10 +1,10 @@
 using FluentValidation;
-using MediatR;
-using System.Threading;
-using System.Threading.Tasks;
 using Localization.Api.Core;
 using Localization.Api.Interfaces;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Localization.Api.Features
 {

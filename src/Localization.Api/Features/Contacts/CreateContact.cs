@@ -1,10 +1,10 @@
 using FluentValidation;
+using Localization.Api.Core;
+using Localization.Api.Interfaces;
+using Localization.Api.Models;
 using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
-using Localization.Api.Models;
-using Localization.Api.Core;
-using Localization.Api.Interfaces;
 
 namespace Localization.Api.Features
 {

@@ -2,8 +2,9 @@ import { OverlayRef } from '@angular/cdk/overlay';
 import { Component, EventEmitter, OnDestroy, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { BehaviorSubject, combineLatest, Observable, Subject } from 'rxjs';
-import { map, takeUntil, tap } from 'rxjs/operators';
+import { map, switchMap, takeUntil, tap } from 'rxjs/operators';
 import { Contact } from '../contact';
+import { ContactDetailIntl } from '../contact-detail-intl';
 import { ContactService } from '../contact.service';
 
 @Component({
@@ -22,10 +23,12 @@ export class ContactDetailComponent implements OnDestroy {
 
   public get title$() {
     return this.contact$.pipe(
-      map(contact => {
+      switchMap(contact => {
+        console.log(contact);
+        
         return contact == null 
-        ? "Create Contact"
-        : "Edit Contact" 
+        ? this.contactDetailIntl.createContactLabel$
+        : this.contactDetailIntl.editContactLabel$
       })
     )
   }
@@ -46,7 +49,9 @@ export class ContactDetailComponent implements OnDestroy {
 
   constructor(
     private readonly _overlayRef: OverlayRef,
-    private readonly _contactService: ContactService) {     
+    private readonly _contactService: ContactService,
+    public contactDetailIntl: ContactDetailIntl
+    ) {     
   }
 
   public save(vm: { form: FormGroup}) {

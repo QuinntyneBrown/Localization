@@ -1,4 +1,3 @@
-using System;
 using Localization.Api.Models;
 
 namespace Localization.Api.Features

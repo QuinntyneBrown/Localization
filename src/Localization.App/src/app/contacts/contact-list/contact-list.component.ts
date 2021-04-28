@@ -7,6 +7,7 @@ import { ContactDetailComponent } from '../contact-detail/contact-detail.compone
 import { ContactService } from '../contact.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { EntityDataSource } from '@shared/entity-data-source';
+import { ContactListIntl } from '../contact-list-intl';
 
 @Component({
   selector: 'app-contact-list',
@@ -59,6 +60,7 @@ export class ContactListComponent implements OnDestroy {
   constructor(
     private readonly _contactService: ContactService,
     private readonly _dialogService: DialogService,
+    public readonly contactListIntl: ContactListIntl
   ) { }
 
   public edit(contact: Contact) {
