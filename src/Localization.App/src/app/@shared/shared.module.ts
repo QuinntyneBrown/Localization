@@ -12,7 +12,6 @@ import {MatTableModule} from '@angular/material/table';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatTabsModule} from '@angular/material/tabs';
-import {EntityActionsComponent} from './entity-actions/entity-actions.component';
 
 
 @NgModule({
@@ -44,9 +43,7 @@ import {EntityActionsComponent} from './entity-actions/entity-actions.component'
     MatListModule,
     MatTableModule,
     MatSnackBarModule,
-    MatPaginatorModule,
-    EntityActionsComponent
-  ],
-  declarations: [EntityActionsComponent]
+    MatPaginatorModule
+  ]
 })
 export class SharedModule { }

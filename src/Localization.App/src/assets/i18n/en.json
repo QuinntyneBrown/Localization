@@ -1,0 +1,12 @@
+{
+    "COMMON": {
+        "CREATE": "Create",
+        "NAME": "Name"
+    },
+    "CONTACTS": {
+        "LIST":"Contact List"
+    },
+    "PAGINATOR": {
+        "ITEMS_PER_PAGE": "1"
+    }
+}

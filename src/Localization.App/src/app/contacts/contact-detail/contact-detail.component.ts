@@ -20,6 +20,16 @@ export class ContactDetailComponent implements OnDestroy {
 
   public contact$: BehaviorSubject<Contact> = new BehaviorSubject(null as any);
 
+  public get title$() {
+    return this.contact$.pipe(
+      map(contact => {
+        return contact == null 
+        ? "Create Contact"
+        : "Edit Contact" 
+      })
+    )
+  }
+
   @Output() public saved = new EventEmitter();
 
   public vm$ = combineLatest([

@@ -37,7 +37,7 @@ namespace Localization.Api.Features
 
                 await _context.SaveChangesAsync(cancellationToken);
 
-                return new Response()
+                return new ()
                 {
                     Contact = contact.ToDto()
                 };

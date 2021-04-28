@@ -1,13 +1,13 @@
 <div *ngIf="vm$ | async as vm">
 
-  <h1 class="mat-headline">Contact List</h1>
+  <h1 class="mat-headline">{{ "CONTACTS.LIST" | translate }}</h1>
 
-  <button mat-raised-button (click)='create()'>Create</button>
+  <button mat-raised-button (click)='create()'>{{ "COMMON.CREATE" | translate }}</button>
   
   <table mat-table [dataSource]="vm.dataSource" class="mat-elevation-z8">
         
       <ng-container matColumnDef="name">
-          <th mat-header-cell *matHeaderCellDef> Name </th>
+          <th mat-header-cell *matHeaderCellDef>{{ "COMMON.NAME" | translate }}</th>
           <td mat-cell *matCellDef="let contact"> {{ contact.name }} </td>
       </ng-container>        
   
