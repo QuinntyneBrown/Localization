@@ -1,4 +1,9 @@
 <mat-card *ngIf="vm$ | async as vm">
+    <button mat-icon-button class="close">
+        <mat-icon>
+            close
+        </mat-icon>
+    </button>
 
     <h1 *ngIf="(contact$ | async)">Edit Contact</h1>
     <h1 *ngIf="!(contact$ | async)">Create Contact</h1>

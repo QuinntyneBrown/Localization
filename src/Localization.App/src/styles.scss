@@ -1,8 +1,11 @@
-/* You can add global styles to this file, and also import other style files */
+@import "src/scss/actions";
 @import "src/scss/breakpoints";
 @import "src/scss/buttons";
+@import "src/scss/cards";
+@import "src/scss/forms";
 @import "src/scss/inputs";
 @import "src/scss/tables";
+@import "src/scss/typography";
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
