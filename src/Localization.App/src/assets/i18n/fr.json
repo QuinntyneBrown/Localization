@@ -1,0 +1,17 @@
+{
+    "COMMON": {
+        "CREATE": "Create",
+        "NAME": "Name"
+    },
+    "CONTACTS": {
+        "LIST":"Contact List?",
+        "EDIT_CONTACT":"Edit Contact",
+        "CREATE_CONTACT":"Create Contact"
+    },
+    "PAGINATOR": {
+        "ITEMS_PER_PAGE": "Items Per Page",
+        "NEXT_PAGE":"Next Page",
+        "PREVIOUS_PAGE":"Previous Page",
+        "RANGE": "{{ startIndex }} - {{ endIndex }} of {{ length }}"
+    }
+}

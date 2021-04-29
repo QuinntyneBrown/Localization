@@ -9,15 +9,18 @@ import { AppMatPaginatorIntl } from './paginator-intl';
 })
 export class AppComponent {
   constructor(
-    private readonly _translateService: TranslateService, 
-    private readonly _s: AppMatPaginatorIntl) {
+    private readonly _translateService: TranslateService) {
 
       _translateService.addLangs(['en', 'fr']);
       _translateService.setDefaultLang('en');
 
     const browserLang = _translateService.getBrowserLang();
     _translateService.use(browserLang.match(/en|fr/) ? browserLang : 'en');
-    _s.getAndInitTranslations();
+    
 
+  }
+
+  public handleLanguageChanged(language: string) {
+    this._translateService.use(language);
   }
 }

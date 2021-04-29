@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace Localization.Api.Models
 {
@@ -7,6 +8,7 @@ namespace Localization.Api.Models
         public Guid ContactId { get; private set; }
         public string Name { get; private set; }
         public string Email { get; private set; }
+        public List<ContactPhone> ContactPhones { get; private set; }
 
         public Contact(string name, string email)
         {

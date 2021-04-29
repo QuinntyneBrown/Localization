@@ -12,7 +12,7 @@ import {MatTableModule} from '@angular/material/table';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatTabsModule} from '@angular/material/tabs';
-
+import {MatMenuModule} from '@angular/material/menu';
 
 @NgModule({
   imports: [    
@@ -29,6 +29,7 @@ import {MatTabsModule} from '@angular/material/tabs';
     MatTableModule,
     MatSnackBarModule,
     MatPaginatorModule,
+    MatMenuModule
   ],
   exports: [
     MatTabsModule,
@@ -43,7 +44,8 @@ import {MatTabsModule} from '@angular/material/tabs';
     MatListModule,
     MatTableModule,
     MatSnackBarModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatMenuModule
   ]
 })
 export class SharedModule { }

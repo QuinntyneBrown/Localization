@@ -11,6 +11,7 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { MatPaginatorIntl } from '@angular/material/paginator';
 import { AppMatPaginatorIntl } from './paginator-intl';
+import { LanguageSelectModule } from '@shared/language-select/language-select.module';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
@@ -24,6 +25,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    LanguageSelectModule,
     HttpClientModule,
     SharedModule,
     TranslateModule.forRoot({
