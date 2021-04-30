@@ -7,6 +7,6 @@ namespace Localization.Api.Features
     {
         public Guid? ContactId { get; set; }
         public string Value { get; set; }
-        public string Type { get; set; } = PhoneType.Home;
+        public string Type { get; set; }
     }
 }

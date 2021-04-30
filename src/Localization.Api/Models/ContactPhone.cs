@@ -8,9 +8,9 @@ namespace Localization.Api.Models
     {
         public Guid ContactId { get; private set; }
         public string Value { get; private set; }
-        public string Type { get; private set; } = PhoneType.Home;
+        public PhoneType Type { get; private set; } = PhoneType.Home;
 
-        public ContactPhone(Guid contactId, string value, string type)
+        public ContactPhone(Guid contactId, string value, PhoneType type)
         {
             ContactId = contactId;
             Value = value;

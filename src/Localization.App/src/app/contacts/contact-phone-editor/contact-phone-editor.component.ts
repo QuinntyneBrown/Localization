@@ -2,6 +2,7 @@ import { Component, ElementRef, forwardRef, Input, OnDestroy, OnInit, ViewEncaps
 import { AbstractControl, ControlValueAccessor, FormArray, FormControl, FormGroup, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validator, Validators } from '@angular/forms';
 import { takeUntil, tap } from 'rxjs/operators';
 import { fromEvent, Subject } from 'rxjs';
+import { PhoneType } from '../phone-type';
 
 @Component({
   selector: 'app-contact-phone-editor',
@@ -23,6 +24,8 @@ import { fromEvent, Subject } from 'rxjs';
 export class ContactPhoneEditorComponent implements ControlValueAccessor,  Validator  {
   private readonly _destroyed$: Subject<void> = new Subject();
   
+  public phoneTypes: string[] = PhoneType.values();
+
   public form = new FormGroup({
     value: new FormControl(null, [Validators.required]),
     type: new FormControl(null, [Validators.required])

@@ -1,8 +1,10 @@
 using FluentValidation;
 using Localization.Api.Core;
 using Localization.Api.Interfaces;
+using Localization.Api.Models;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -47,7 +49,7 @@ namespace Localization.Api.Features
 
                 foreach (var contactPhone in request.Contact.ContactPhones)
                 {
-                    contact.AddContactPhone(contactPhone.Value, contactPhone.Type);
+                    contact.AddContactPhone(contactPhone.Value, (PhoneType)Enum.Parse(typeof(PhoneType), contactPhone.Type));
                 }
 
                 await _context.SaveChangesAsync(cancellationToken);

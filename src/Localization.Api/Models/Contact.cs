@@ -28,7 +28,7 @@ namespace Localization.Api.Models
             Email = email;
         }
 
-        public void AddContactPhone(string value, string type)
+        public void AddContactPhone(string value, PhoneType type)
         {
             if(ContactPhones.SingleOrDefault(x => x.Value == value && x.Type == type) != null)
             {

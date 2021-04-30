@@ -22,7 +22,7 @@ namespace Localization.Api.Features
             {
                 ContactId = contact.ContactId,
                 Value = contact.Value,
-                Type = contact.Type
+                Type = contact.Type.ToString()
             };
         }
     }
