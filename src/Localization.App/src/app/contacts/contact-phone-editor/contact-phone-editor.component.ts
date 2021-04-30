@@ -1,8 +1,9 @@
 import { Component, ElementRef, forwardRef, Input, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { AbstractControl, ControlValueAccessor, FormArray, FormControl, FormGroup, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validator, Validators } from '@angular/forms';
-import { takeUntil, tap } from 'rxjs/operators';
-import { fromEvent, Subject } from 'rxjs';
+import { map, switchMap, takeUntil, tap } from 'rxjs/operators';
+import { fromEvent, merge, Observable, of, Subject } from 'rxjs';
 import { PhoneType } from '../phone-type';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-contact-phone-editor',
@@ -24,7 +25,17 @@ import { PhoneType } from '../phone-type';
 export class ContactPhoneEditorComponent implements ControlValueAccessor,  Validator  {
   private readonly _destroyed$: Subject<void> = new Subject();
   
-  public phoneTypes: string[] = PhoneType.values();
+  public phoneTypes$: Observable<string[]> = this._translateService.stream(PhoneType.values().map(p => `COMMON.${p}`)).pipe(
+    map(translations => {
+      return Object.entries(translations).reduce((a,b) => {
+        a.push({ key: b[0].replace('COMMON.',''), value: b[1]});
+        return a;
+      }, [])
+    }),
+    map( kv => {
+      return kv.sort((a,b) => a.value.localeCompare(b.value));
+    })
+  )
 
   public form = new FormGroup({
     value: new FormControl(null, [Validators.required]),
@@ -32,8 +43,11 @@ export class ContactPhoneEditorComponent implements ControlValueAccessor,  Valid
   });
 
   constructor(
-    private readonly _elementRef: ElementRef
-  ) { }
+    private readonly _elementRef: ElementRef,
+    private readonly _translateService: TranslateService
+  ) { 
+
+  }
   
   validate(control: AbstractControl): ValidationErrors {
     return this.form.valid ? null

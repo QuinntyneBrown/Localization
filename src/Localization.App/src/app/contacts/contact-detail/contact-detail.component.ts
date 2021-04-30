@@ -23,9 +23,7 @@ export class ContactDetailComponent implements OnDestroy {
 
   public get title$() {
     return this.contact$.pipe(
-      switchMap(contact => {
-        console.log(contact);
-        
+      switchMap(contact => {        
         return contact == null 
         ? this.contactDetailIntl.createContactLabel$
         : this.contactDetailIntl.editContactLabel$

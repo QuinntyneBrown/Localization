@@ -1,10 +1,12 @@
 {
     "COMMON": {
         "CREATE": "Create",
-        "NAME": "Name"
+        "NAME": "Name",
+        "Home": "Domicile",
+        "Office": "Bureau"        
     },
     "CONTACTS": {
-        "LIST":"Contact List?",
+        "LIST":"Liste de contacts",
         "EDIT_CONTACT":"Edit Contact",
         "CREATE_CONTACT":"Create Contact"
     },
