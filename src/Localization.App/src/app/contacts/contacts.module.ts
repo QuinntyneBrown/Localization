@@ -8,11 +8,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
+import { ContactPhoneEditorComponent } from './contact-phone-editor/contact-phone-editor.component';
+import { ContactPhoneComponent } from './contact-phone/contact-phone.component';
 
 
 
 @NgModule({
-  declarations: [ContactListComponent, ContactDetailComponent, ContactEditorComponent],
+  declarations: [ContactListComponent, ContactDetailComponent, ContactEditorComponent, ContactPhoneEditorComponent, ContactPhoneComponent],
   imports: [
     CommonModule,
     SharedModule,

@@ -17,7 +17,6 @@ namespace Localization.Api.Features
                 RuleFor(request => request.Contact).NotNull();
                 RuleFor(request => request.Contact).SetValidator(new ContactValidator());
             }
-
         }
 
         public class Request : IRequest<Response>
@@ -42,6 +41,11 @@ namespace Localization.Api.Features
                 var contact = new Contact(request.Contact.Name, request.Contact.Email);
 
                 _context.Contacts.Add(contact);
+
+                foreach(var contactPhone in request.Contact.ContactPhones)
+                {
+                    contact.AddContactPhone(contactPhone.Value, contactPhone.Type);
+                }
 
                 await _context.SaveChangesAsync(cancellationToken);
 

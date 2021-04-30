@@ -1,13 +1,33 @@
-<form novalidate autocomplete='off' spellcheck='false' [formGroup]='form'>
-    <mat-form-field appearance="outline">
-        <mat-label>Name</mat-label>
-        <input matInput placeholder='Name'
-        formControlName='name' required>
-    </mat-form-field>
+<mat-tab-group [class.mat-tab-header-hidden]="!form.value.fooId" [animationDuration]="0">
+    <mat-tab label="Contact">
+        <form novalidate autocomplete='off' spellcheck='false' [formGroup]='form'>
+            <mat-form-field appearance="outline">
+                <mat-label>Name</mat-label>
+                <input matInput placeholder='Name'
+                formControlName='name' required>
+            </mat-form-field>
+        
+            <mat-form-field appearance="outline">
+                <mat-label>Email</mat-label>
+                <input matInput placeholder='Email'
+                formControlName='email' required>
+            </mat-form-field>   
+        </form>
+    </mat-tab>
 
-    <mat-form-field appearance="outline">
-        <mat-label>Email</mat-label>
-        <input matInput placeholder='Email'
-        formControlName='email' required>
-    </mat-form-field>    
-</form>
+    <mat-tab label="Contact Phones">
+        <app-contact-phone-editor [formControl]="contactPhoneEditorControl"></app-contact-phone-editor>
+
+        <button mat-button (click)="handleAddClick()" [disabled]="!contactPhoneEditorControl.dirty">Add Phone</button>
+        
+        <h2>Contact Phones</h2>
+        
+        <ul>
+            <li *ngFor="let contactPhone of form.value.contactPhones">
+                <app-contact-phone [contactPhone]="contactPhone"></app-contact-phone>
+            </li>
+        </ul>
+    </mat-tab>
+</mat-tab-group>
+
+

@@ -43,6 +43,13 @@ namespace Localization.Api.Features
 
                 contact.Update(request.Contact.Name, request.Contact.Email);
 
+                contact.ContactPhones.Clear();
+
+                foreach (var contactPhone in request.Contact.ContactPhones)
+                {
+                    contact.AddContactPhone(contactPhone.Value, contactPhone.Type);
+                }
+
                 await _context.SaveChangesAsync(cancellationToken);
 
                 return new()

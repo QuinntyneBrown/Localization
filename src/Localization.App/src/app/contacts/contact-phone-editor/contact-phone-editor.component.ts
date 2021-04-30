@@ -1,54 +1,39 @@
 import { Component, ElementRef, forwardRef, Input, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { AbstractControl, ControlValueAccessor, FormArray, FormControl, FormGroup, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validator, Validators } from '@angular/forms';
+import { takeUntil, tap } from 'rxjs/operators';
 import { fromEvent, Subject } from 'rxjs';
-import { takeUntil, tap } from 'rxjs/operators';;
-import { Contact } from '../contact';
 
 @Component({
-  selector: 'app-contact-editor',
-  templateUrl: './contact-editor.component.html',
-  styleUrls: ['./contact-editor.component.scss'],
+  selector: 'app-contact-phone-editor',
+  templateUrl: './contact-phone-editor.component.html',
+  styleUrls: ['./contact-phone-editor.component.scss'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => ContactEditorComponent),
+      useExisting: forwardRef(() => ContactPhoneEditorComponent),
       multi: true
     },
     {
       provide: NG_VALIDATORS,
-      useExisting: forwardRef(() => ContactEditorComponent),
+      useExisting: forwardRef(() => ContactPhoneEditorComponent),
       multi: true
     }       
   ]
 })
-export class ContactEditorComponent implements ControlValueAccessor,  Validator  {
+export class ContactPhoneEditorComponent implements ControlValueAccessor,  Validator  {
   private readonly _destroyed$: Subject<void> = new Subject();
-
+  
   public form = new FormGroup({
-    contactId: new FormControl(),
-    name: new FormControl(null, [Validators.required]),
-    email: new FormControl(null, [Validators.required]),
-    contactPhones: new FormArray([])
+    value: new FormControl(null, [Validators.required]),
+    type: new FormControl(null, [Validators.required])
   });
-
-  public contactPhoneEditorControl = new FormControl("",[]);
 
   constructor(
     private readonly _elementRef: ElementRef
   ) { }
-
-  public handleAddClick() {
-    const contactPhones = this.form.get('contactPhones') as FormArray;
-
-    contactPhones.push(new FormControl(this.contactPhoneEditorControl.value));
-
-    this.contactPhoneEditorControl.reset();
-    this.contactPhoneEditorControl.markAsPristine();
-  }
-
+  
   validate(control: AbstractControl): ValidationErrors {
-    return this.form.valid
-      ? null
+    return this.form.valid ? null
       : Object.keys(this.form.controls).reduce(
           (accumulatedErrors, formControlName) => {
             const errors = { ...accumulatedErrors };
@@ -64,21 +49,15 @@ export class ContactEditorComponent implements ControlValueAccessor,  Validator 
           {}
         );
   }
-  
-  writeValue(contact: Contact): void {     
-    if(contact) {
-      this.form.patchValue({
-        contactId: contact.contactId,
-        name: contact.name,
-        email: contact.email
-      }, { emitEvent: false });
-
-      for(let i = 0; i < contact.contactPhones.length; i++) {
-        const contactPhones = this.form.get("contactPhones") as FormArray;
-
-        contactPhones.push(new FormControl(contact.contactPhones[i]))
-      }
+    
+  writeValue(obj: any): void {     
+    if(obj == null) {
+      this.form.reset();
     }
+
+    if(obj) {
+      this.form.setValue(obj, { emitEvent: false });
+    }    
   }
 
   registerOnChange(fn: any): void {
@@ -89,7 +68,7 @@ export class ContactEditorComponent implements ControlValueAccessor,  Validator 
     this._elementRef.nativeElement
       .querySelectorAll("*")
       .forEach((element: HTMLElement) => {
-        fromEvent(element, "focus")
+        fromEvent(element, "blur")
           .pipe(
             takeUntil(this._destroyed$),
             tap(x => fn())

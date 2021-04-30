@@ -25,6 +25,5 @@ namespace Localization.Api.Features
                 Type = contact.Type
             };
         }
-
     }
 }
