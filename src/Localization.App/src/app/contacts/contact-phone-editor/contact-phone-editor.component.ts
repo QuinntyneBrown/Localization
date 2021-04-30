@@ -1,7 +1,7 @@
-import { Component, ElementRef, forwardRef, Input, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
-import { AbstractControl, ControlValueAccessor, FormArray, FormControl, FormGroup, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validator, Validators } from '@angular/forms';
+import { Component, ElementRef, forwardRef } from '@angular/core';
+import { AbstractControl, ControlValueAccessor, FormControl, FormGroup, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validator, Validators } from '@angular/forms';
 import { map, takeUntil, tap } from 'rxjs/operators';
-import { fromEvent, merge, Observable, of, Subject } from 'rxjs';
+import { fromEvent, Observable, Subject } from 'rxjs';
 import { PhoneType } from '../phone-type';
 import { TranslateService } from '@ngx-translate/core';
 
@@ -25,9 +25,10 @@ import { TranslateService } from '@ngx-translate/core';
 export class ContactPhoneEditorComponent implements ControlValueAccessor,  Validator  {
   private readonly _destroyed$: Subject<void> = new Subject();
   
-  public phoneTypes$: Observable<string[]> = merge([of(true),this._translateService.onLangChange]).pipe(
-    map(x => {
-      return this._translateService.currentLang == "en" ? PhoneType.values().sort()
+  public phoneTypes$: Observable<string[]> = this._translateService.stream("COMMON").pipe(
+    map( _ => {
+      return this._translateService.currentLang == "en" 
+      ? PhoneType.values().sort()
       :[
         PhoneType.Office,
         PhoneType.Home
