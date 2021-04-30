@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { AppMatPaginatorIntl } from './paginator-intl';
 
 @Component({
   selector: 'app-root',
@@ -16,8 +15,6 @@ export class AppComponent {
 
     const browserLang = _translateService.getBrowserLang();
     _translateService.use(browserLang.match(/en|fr/) ? browserLang : 'en');
-    
-
   }
 
   public handleLanguageChanged(language: string) {

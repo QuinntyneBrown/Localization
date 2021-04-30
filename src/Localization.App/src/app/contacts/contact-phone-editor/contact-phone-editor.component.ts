@@ -25,11 +25,7 @@ import { TranslateService } from '@ngx-translate/core';
 export class ContactPhoneEditorComponent implements ControlValueAccessor,  Validator  {
   private readonly _destroyed$: Subject<void> = new Subject();
   
-  public phoneTypes$: Observable<string[]> = merge([of(true),this._translateService.onLangChange]).pipe(
-    switchMap(x => {
-      const locallizationKeys = PhoneType.values().map(p => `COMMON.${p}`);
-      return this._translateService.get(locallizationKeys);
-    }),
+  public phoneTypes$: Observable<string[]> = this._translateService.stream(PhoneType.values().map(p => `COMMON.${p}`)).pipe(
     map(translations => {
       return Object.entries(translations).reduce((a,b) => {
         a.push({ key: b[0].replace('COMMON.',''), value: b[1]});
