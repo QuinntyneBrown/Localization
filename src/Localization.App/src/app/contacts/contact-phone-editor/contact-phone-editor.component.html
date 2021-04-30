@@ -8,8 +8,8 @@
     <mat-form-field appearance="outline">
         <mat-label>Type</mat-label>
         <mat-select formControlName='type' required>
-            <mat-option *ngFor="let phoneType of phoneTypes" [value]="phoneType">
-              {{ phoneType }}
+            <mat-option *ngFor="let phoneType of (phoneTypes$ | async)" [value]="phoneType">
+              {{ "COMMON." + phoneType | translate }}
             </mat-option>
         </mat-select>
     </mat-form-field>

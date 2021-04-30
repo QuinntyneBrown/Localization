@@ -1,7 +1,9 @@
 {
     "COMMON": {
         "CREATE": "Create",
-        "NAME": "Name"
+        "NAME": "Name",
+        "Home": "Home",
+        "Office": "Office"
     },
     "CONTACTS": {
         "LIST":"Contact List",
