@@ -1,7 +1,6 @@
 import { Injectable } from "@angular/core";
 import { TranslateService } from "@ngx-translate/core";
-import { of, merge, BehaviorSubject, Observable } from "rxjs";
-import { tap } from "rxjs/operators";
+import { Observable } from "rxjs";
 
 @Injectable({
     providedIn: "root"
