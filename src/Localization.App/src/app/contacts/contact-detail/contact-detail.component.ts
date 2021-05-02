@@ -4,8 +4,8 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { BehaviorSubject, combineLatest, Observable, Subject } from 'rxjs';
 import { map, switchMap, takeUntil, tap } from 'rxjs/operators';
 import { Contact } from '../contact';
-import { ContactDetailIntl } from '../contact-detail-intl';
 import { ContactService } from '../contact.service';
+import { ContactDetailIntl } from './contact-detail-intl';
 
 @Component({
   selector: 'app-contact-detail',

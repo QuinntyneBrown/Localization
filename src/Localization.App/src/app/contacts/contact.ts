@@ -6,6 +6,6 @@ export type Contact = {
 };
 
 export type ContactPhone = {
-    type:string;
-    value:string;
+    type: "Home" | "Office";
+    value: string;
 }

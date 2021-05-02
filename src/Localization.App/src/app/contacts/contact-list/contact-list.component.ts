@@ -7,7 +7,8 @@ import { ContactDetailComponent } from '../contact-detail/contact-detail.compone
 import { ContactService } from '../contact.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { EntityDataSource } from '@shared/entity-data-source';
-import { ContactListIntl } from '../contact-list-intl';
+import { ContactListIntl } from './contact-list-intl';
+
 
 @Component({
   selector: 'app-contact-list',
