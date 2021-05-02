@@ -43,8 +43,8 @@ namespace Localization.Api.Features
 
                 _context.Contacts.Add(contact);
 
-                foreach(var contactPhone in request.Contact.ContactPhones)
-                {                    
+                foreach (var contactPhone in request.Contact.ContactPhones)
+                {
                     contact.AddContactPhone(contactPhone.Value, (PhoneType)Enum.Parse(typeof(PhoneType), contactPhone.Type));
                 }
 

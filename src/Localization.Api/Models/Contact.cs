@@ -9,7 +9,7 @@ namespace Localization.Api.Models
         public Guid ContactId { get; private set; }
         public string Name { get; private set; }
         public string Email { get; private set; }
-        public List<ContactPhone> ContactPhones { get; private set; } = new ();
+        public List<ContactPhone> ContactPhones { get; private set; } = new();
 
         public Contact(string name, string email)
         {
@@ -30,7 +30,7 @@ namespace Localization.Api.Models
 
         public void AddContactPhone(string value, PhoneType type)
         {
-            if(ContactPhones.SingleOrDefault(x => x.Value == value && x.Type == type) != null)
+            if (ContactPhones.SingleOrDefault(x => x.Value == value && x.Type == type) != null)
             {
                 throw new Exception("Phone exists!");
             }

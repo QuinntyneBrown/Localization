@@ -8,6 +8,6 @@ namespace Localization.Api.Features
         public Guid? ContactId { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
-        public List<ContactPhoneDto> ContactPhones { get; set; } = new ();
+        public List<ContactPhoneDto> ContactPhones { get; set; } = new();
     }
 }
