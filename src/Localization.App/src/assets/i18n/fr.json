@@ -1,14 +1,14 @@
 {
     "COMMON": {
-        "CREATE": "Create",
-        "NAME": "Name",
+        "CREATE": "Créer",
+        "NAME": "Nom",
         "Home": "Domicile",
         "Office": "Bureau"        
     },
     "CONTACTS": {
         "LIST":"Liste de contacts",
-        "EDIT_CONTACT":"Edit Contact",
-        "CREATE_CONTACT":"Create Contact"
+        "EDIT_CONTACT":"Modifier le contact",
+        "CREATE_CONTACT":"Créer un contact"
     },
     "PAGINATOR": {
         "ITEMS_PER_PAGE": "Items Per Page",
